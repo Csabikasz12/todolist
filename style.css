@@ -96,7 +96,7 @@ input {
   margin: 0;
   border: none;
   border-radius: 0;
-  width: 75%;
+  width: 60%;
   padding: 10px;
   float: left;
   font-size: 16px;
@@ -118,4 +118,17 @@ input {
 
 .addBtn:hover {
   background-color: #bbb;
+  
+}
+
+
+.dayContent {
+  display: none;
+  margin-top: 10px;
+  padding-left: 20px;
+  font-size: 16px;
+}
+
+.open .dayContent {
+  display: block;
 }
