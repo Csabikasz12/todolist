@@ -1,134 +1,147 @@
-
 body {
   margin: 0;
   min-width: 250px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
 }
 
-/* Include the padding and border in an element's total width and height */
-* {
-  box-sizing: border-box;
-}
-
-/* Remove margins and padding from the list */
+/* App container */
 ul {
   margin: 0;
   padding: 0;
+  width: 500px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  overflow: hidden;
 }
 
-/* Style the list items */
-ul li {
-  cursor: pointer;
-  position: relative;
-  padding: 12px 8px 12px 40px;
-  list-style-type: none;
-  background: #eee;
-  font-size: 18px;
-  transition: 0.2s;
-  
-  /* make the list items unselectable */
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/* Set all odd list items to a different color (zebra-stripes) */
-ul li:nth-child(odd) {
-  background: #f9f9f9;
-}
-
-/* Darker background-color on hover */
-ul li:hover {
-  background: #ddd;
-}
-
-/* When clicked on, add a background color and strike out text */
-ul li.checked {
-  background: #888;
-  color: #fff;
-  text-decoration: line-through;
-}
-
-/* Add a "checked" mark when clicked on */
-ul li.checked::before {
-  content: '';
-  position: absolute;
-  border-color: #fff;
-  border-style: solid;
-  border-width: 0 2px 2px 0;
-  top: 10px;
-  left: 16px;
-  transform: rotate(45deg);
-  height: 15px;
-  width: 7px;
-}
-
-/* Style the close button */
-.close {
-  position: absolute;
-  right: 0;
-  top: 0;
-  padding: 12px 16px 12px 16px;
-}
-
-.close:hover {
-  background-color: #f44336;
-  color: white;
-}
-
-/* Style the header */
+/* Header */
 .header {
-  background-color: #f44336;
-  padding: 30px 40px;
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  padding: 25px;
   color: white;
   text-align: center;
+
+  display: flex;
+  flex-wrap: wrap;       /* ha szűk a hely, új sorba kerül */
+  justify-content: center;
+  align-items: center;   /* függőleges közép */
+  gap: 10px;             /* kis távolság az elemek között */
 }
 
-/* Clear floats after the header */
-.header:after {
-  content: "";
-  display: table;
-  clear: both;
+input, select, .addBtn {
+  margin-top: 0; /* flex miatt nem kell plusz margin */
 }
 
-/* Style the input */
+.header h2 {
+  margin: 0 0 15px 0;
+}
+
+/* Input */
 input {
-  margin: 0;
   border: none;
-  border-radius: 0;
-  width: 60%;
+  border-radius: 8px;
+  width: 55%;
   padding: 10px;
-  float: left;
-  font-size: 16px;
+  font-size: 15px;
+  outline: none;
 }
 
-/* Style the "Add" button */
+/* Select */
+/* Select kicsit lentebb */
+select {
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  margin-left: 5px;
+  margin-top: 5px; /* <-- ez tolja lejjebb */
+  font-size: 14px;
+  vertical-align: middle; /* szebb igazítás az inputhoz képest */
+}
+
+/* Add button */
 .addBtn {
   padding: 10px;
-  width: 25%;
-  background: #d9d9d9;
-  color: #555;
-  float: left;
-  text-align: center;
-  font-size: 16px;
+  width: 20%;
+  margin-left: 5px;
+  background: white;
+  color: #ff416c;
+  font-weight: bold;
+  border-radius: 8px;
   cursor: pointer;
   transition: 0.3s;
-  border-radius: 0;
 }
 
 .addBtn:hover {
-  background-color: #bbb;
-  
+  background-color: #ffe3e8;
+  transform: scale(1.05);
 }
 
+/* List items */
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 15px 15px 15px 45px;
+  list-style-type: none;
+  font-size: 17px;
+  transition: 0.3s;
+  border-bottom: 1px solid #f1f1f1;
+}
 
-.dayContent {
+/* Hover */
+ul li:hover {
+  background: #f8f8ff;
+}
+
+/* Checked */
+ul li.checked {
+  background: #d4edda;
+  color: #155724;
+  text-decoration: line-through;
+}
+
+/* Check icon */
+ul li.checked::before {
+  content: "✔";
+  position: absolute;
+  left: 15px;
+  font-size: 16px;
+  color: #155724;
+}
+
+/* Close button */
+.close {
+  position: absolute;
+  right: 10px;
+  top: 12px;
+  font-size: 18px;
+  color: #aaa;
+  transition: 0.3s;
+}
+
+.close:hover {
+  color: #ff4b2b;
+  transform: scale(1.2);
+}
+
+/* Day content */
+.daycontent {
   display: none;
   margin-top: 10px;
   padding-left: 20px;
-  font-size: 16px;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-.open .dayContent {
+.open .daycontent {
   display: block;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(-5px);}
+  to {opacity: 1; transform: translateY(0);}
 }
