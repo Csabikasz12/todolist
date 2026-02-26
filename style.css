@@ -1,47 +1,39 @@
+/* Body: teljes háttér és középre igazítás */
 body {
+  min-height: 100dvh;
   margin: 0;
-  min-width: 250px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, red, black);
   display: flex;
-  justify-content: center;
+  flex-direction: column;   /* header és lista egymás alatt */
+  justify-content: flex-start;
+  align-items: center;
   padding: 40px 0;
+  gap: 20px;
 }
 
-/* App container */
-ul {
-  margin: 0;
-  padding: 0;
-  width: 500px;
-  background: white;
+/* Header kártya (#myDIV) */
+#myDIV {
+  background: linear-gradient(135deg, black, #ff4b2b);
+  padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-  overflow: hidden;
-}
-
-/* Header */
-.header {
-  background: linear-gradient(135deg, #ff416c, #ff4b2b);
-  padding: 25px;
-  color: white;
-  text-align: center;
-
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
   display: flex;
-  flex-wrap: wrap;       /* ha szűk a hely, új sorba kerül */
-  justify-content: center;
-  align-items: center;   /* függőleges közép */
-  gap: 10px;             /* kis távolság az elemek között */
+  flex-wrap: wrap;
+  justify-content: center;  /* vízszintesen középre */
+  align-items: center;      /* függőlegesen középre */
+  gap: 10px;
+  max-width: 500px;
 }
 
-input, select, .addBtn {
-  margin-top: 0; /* flex miatt nem kell plusz margin */
-}
-
+/* Header címsor */
 .header h2 {
   margin: 0 0 15px 0;
+  width: 100%;
+  text-align: center;
 }
 
-/* Input */
+/* Input mező */
 input {
   border: none;
   border-radius: 8px;
@@ -52,18 +44,17 @@ input {
 }
 
 /* Select */
-/* Select kicsit lentebb */
 select {
   border: none;
   border-radius: 8px;
   padding: 10px;
   margin-left: 5px;
-  margin-top: 5px; /* <-- ez tolja lejjebb */
+  margin-top: 5px;
   font-size: 14px;
-  vertical-align: middle; /* szebb igazítás az inputhoz képest */
+  vertical-align: middle;
 }
 
-/* Add button */
+/* ADD gomb */
 .addBtn {
   padding: 10px;
   width: 20%;
@@ -72,6 +63,7 @@ select {
   color: #ff416c;
   font-weight: bold;
   border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   cursor: pointer;
   transition: 0.3s;
 }
@@ -81,15 +73,41 @@ select {
   transform: scale(1.05);
 }
 
-/* List items */
+/* App container (lista kártya) */
+.app-container {
+  width: 500px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* napok középre */
+  padding: 10px 0;
+}
+
+/* Lista */
+ul {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* napok középre */
+}
+
+/* Napok (li) */
 ul li {
   cursor: pointer;
   position: relative;
-  padding: 15px 15px 15px 45px;
-  list-style-type: none;
+  padding: 15px 45px;
   font-size: 17px;
   transition: 0.3s;
   border-bottom: 1px solid #f1f1f1;
+  width: fit-content;
+  text-align: center;
+  border-radius: 8px;  /* lekerekítés */
 }
 
 /* Hover */
@@ -104,7 +122,7 @@ ul li.checked {
   text-decoration: line-through;
 }
 
-/* Check icon */
+/* Check mark */
 ul li.checked::before {
   content: "✔";
   position: absolute;
@@ -128,7 +146,7 @@ ul li.checked::before {
   transform: scale(1.2);
 }
 
-/* Day content */
+/* Day content (lenyíló rész) */
 .daycontent {
   display: none;
   margin-top: 10px;
@@ -140,7 +158,7 @@ ul li.checked::before {
   display: block;
 }
 
-/* Animation */
+/* Animáció */
 @keyframes fadeIn {
   from {opacity: 0; transform: translateY(-5px);}
   to {opacity: 1; transform: translateY(0);}
